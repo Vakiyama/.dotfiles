@@ -33,3 +33,5 @@
 !kitty/
 !kitty/*
 
+# background
+!bg.jpg
