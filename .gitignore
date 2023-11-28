@@ -1,0 +1,33 @@
+# Ignore everything by default.
+*
+
+# me! 
+!.gitignore
+
+# home-manager
+!home-manager/
+!home-manager/*
+!home-manager/*/*
+!home-manager/*/*/*
+!home-manager/*/*/*/*
+
+# i3
+!i3/
+!i3/*
+
+# nvim
+!nvim
+!nvim/*
+!nvim/*/*
+!nvim/*/*/*
+!nvim/*/*/*/*
+
+# tmux
+!tmux/
+!tmux/*
+!tmux/*/*
+
+# kitty
+!kitty/
+!kitty/*
+
