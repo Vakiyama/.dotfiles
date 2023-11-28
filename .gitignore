@@ -4,6 +4,8 @@
 # me! 
 !.gitignore
 
+README.md
+
 # home-manager
 !home-manager/
 !home-manager/*
