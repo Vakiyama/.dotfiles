@@ -21,6 +21,11 @@
             time = { 
                 format = "\\[[$time]($style)\\]"; 
             };
+            battery = {
+                full_symbol = "🔋 ";
+                charging_symbol = "⚡️ ";
+                discharging_symbol = "💀 ";
+            };
             os = { format = "\\[[$symbol]($style)\\]"; };
             sudo = { format = "\\[[as $symbol]($style)\\]"; };
             cmd_duration = { 
