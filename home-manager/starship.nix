@@ -27,6 +27,10 @@
                 discharging_symbol = "💀 ";
             };
             os = { format = "\\[[$symbol]($style)\\]"; };
+            package = {
+                format = "\\[[󱍵 $version](bold #81c8be)\\]";
+            };
+            # package = { format = "\\[[$symbol$version]($style)\\]"; };
             sudo = { format = "\\[[as $symbol]($style)\\]"; };
             cmd_duration = { 
                 format = "\\[[⏱ $duration]($style)\\]"; 
@@ -42,7 +46,6 @@
                 format = "\\[[$symbol$state( \\($name\\))]($style)\\]"; 
                 symbol = "nix ";
             };
-            package = { format = "\\[[$symbol$version]($style)\\]"; };
             python = { 
                 format = "\\[[$symbol$pyenv_prefix($version)(\\($virtualenv\\))]($style)\\]"; 
                 symbol = "py ";
