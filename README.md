@@ -1,6 +1,6 @@
-my dotfiles, including home manager config
+My dotfiles, including home manager config.
 
-the goal is to replace all (most) dotfiles with nix home manager for that smooth declarative experience
+The goal is to replace all (most) dotfiles with nix home manager for that smooth declarative experience
 
-## currently tracked by home manager:
+## Currently tracked by home manager:
 * starship
