@@ -37,7 +37,7 @@
                 min_time = 10000;
             };
             git_branch = { format = "\\[[$symbol$branch]($style)\\]"; };
-            git_status = { format = "([\\[[$all_status$ahead_behind](bold #a6d189)\\]](#c6d0f5))"; };
+            git_status = { format = "([\\[[󰊢 $all_status$ahead_behind](bold #eebebe)\\]](#c6d0f5))"; };
             lua = { 
                 format = "\\[[$symbol($version)]($style)\\]"; 
                 symbol = "lua";
