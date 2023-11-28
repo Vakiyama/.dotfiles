@@ -23,6 +23,9 @@
     (pkgs.writeShellScriptBin "screamSetup" ''
         scream -i virbr0 -p 4011 -u -v
     '')
+    (pkgs.writeShellScriptBin "replaceBackground" ''
+        feh --bg-scale ../bg.jpg
+    '')
     ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
