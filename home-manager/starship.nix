@@ -43,7 +43,7 @@
                 symbol = "lua";
             };
             nix_shell = { 
-                format = "\\[[$symbol$state( \\($name\\))]($style)\\]"; 
+                format = "\\[[$symbol$state]($style)\\]"; 
                 symbol = "nix ";
             };
             python = { 
