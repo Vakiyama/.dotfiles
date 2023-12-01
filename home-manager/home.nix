@@ -18,13 +18,12 @@
     (pkgs.writeShellScriptBin "xrandr-setup" ''
         xrandr --output HDMI-0 --auto --rate 165 --primary
         sudo virsh net-start default
-        feh --bg-scale ../bg.jpg
     '')
     (pkgs.writeShellScriptBin "scream-setup" ''
         scream -i virbr0 -p 4011 -u -v
     '')
     (pkgs.writeShellScriptBin "replace-background" ''
-        feh --bg-scale ../bg.jpg
+        feh --bg-scale ~/.config/bg.jpg
     '')
     (pkgs.writeShellScriptBin "default-network" ''
         sudo virsh net-start default

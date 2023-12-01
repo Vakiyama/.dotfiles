@@ -62,6 +62,10 @@
                 format = "\\[[$symbol($version)]($style)\\]";
                 symbol = "node ";
             };
+            java = { 
+                format = "\\[[$symbol($version)]($style)\\]";
+                symbol = "java ";
+            };
         };
     };
 }
