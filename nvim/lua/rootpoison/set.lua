@@ -8,7 +8,7 @@ vim.opt.expandtab = true
 
 vim.opt.cindent = true
 
--- vim.opt.wrap = false
+vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false

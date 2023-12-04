@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
 		{'hrsh7th/cmp-nvim-lsp'}, -- Required
 		{'L3MON4D3/LuaSnip'},     -- Required
 	}};
-	use ('github/copilot.vim')
+	-- use ('github/copilot.vim')
 	use ('f-person/git-blame.nvim') -- for blaming my coworkers
 	use ('prichrd/netrw.nvim') -- nicer netrw
     use ({
@@ -62,9 +62,6 @@ return require('packer').startup(function(use)
 
     -- refactoring plugin 
     use ({ 'ThePrimeagen/refactoring.nvim' })
-
-    -- for zen coding in large codebases 
-    use ( 'folke/twilight.nvim' )
 
     use 'stevearc/oil.nvim'
 end)
