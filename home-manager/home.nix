@@ -28,6 +28,12 @@
     (pkgs.writeShellScriptBin "default-network" ''
         sudo virsh net-start default
     '')
+    (pkgs.writeShellScriptBin "gs" ''
+        git status
+    '')
+    (pkgs.writeShellScriptBin "nd" ''
+        nix develop
+    '')
     ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
