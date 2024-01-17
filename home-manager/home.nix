@@ -82,18 +82,17 @@
         '';
     };
 
-  programs = {
-      git = {
-        enable = true;
-        userName  = "Vakiyama";
-        userEmail = "vakiyama@outlook.com";
-        extraConfig = {
-            credential.helper = "store";
+    programs = {
+        git = {
+          enable = true;
+          userName  = "Vakiyama";
+          userEmail = "vakiyama@outlook.com";
+          extraConfig = {
+              credential.helper = "store";
+          };
         };
-      };
-  };
+    };
 
-
-# Let Home Manager install and manage itself.
+    # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
 }

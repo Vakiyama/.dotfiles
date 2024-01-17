@@ -66,6 +66,10 @@
                 format = "\\[[$symbol($version)]($style)\\]";
                 symbol = "java ";
             };
+            ocaml = { 
+                format = "\\[[$symbol($version)]($style)\\]";
+                symbol = "ocaml ";
+            };
         };
     };
 }
