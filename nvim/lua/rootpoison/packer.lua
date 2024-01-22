@@ -63,5 +63,9 @@ return require('packer').startup(function(use)
     -- refactoring plugin 
     use ({ 'ThePrimeagen/refactoring.nvim' })
 
-    use 'stevearc/oil.nvim'
+    -- use 'stevearc/oil.nvim'
+    use 'ThePrimeagen/vim-apm'
+    use 'andweeb/presence.nvim'
+    use 'MunifTanjim/prettier.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 end)

@@ -11,7 +11,6 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -54,6 +53,17 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['tsserver'] = {'javascript', 'typescript'},
+    ['rust_analyzer'] = {'rust'},
+  }
+})
 
 vim.diagnostic.config({
     virtual_text = true
