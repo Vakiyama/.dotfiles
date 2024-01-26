@@ -6,6 +6,7 @@ lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
   'ocamllsp',
+  'nil_ls',
 })
 
 -- Fix Undefined global 'vim'
@@ -62,6 +63,7 @@ lsp.format_on_save({
   servers = {
     ['tsserver'] = {'javascript', 'typescript'},
     ['rust_analyzer'] = {'rust'},
+    ['nil_ls'] = {'nix'},
   }
 })
 

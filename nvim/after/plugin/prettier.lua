@@ -38,6 +38,6 @@ prettier.setup({
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.md"},
+    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.md", "*.nix", "*.ml"},
     command = "Prettier"
 })
