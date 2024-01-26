@@ -68,4 +68,6 @@ return require('packer').startup(function(use)
     use 'andweeb/presence.nvim'
     use 'MunifTanjim/prettier.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
+    use 'tpope/vim-vinegar' 
+    use 'nvim-tree/nvim-web-devicons'
 end)

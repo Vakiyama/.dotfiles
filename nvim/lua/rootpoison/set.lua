@@ -23,4 +23,5 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 -- remove netrw info banner
+vim.opt.fillchars = {eob = " "}
 vim.g.netrw_banner = 0

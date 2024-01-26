@@ -10,4 +10,3 @@ vim.keymap.set("n", "<A-3>", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<A-4>", function() ui.nav_file(4) end)
 vim.keymap.set("n", "<A-5>", function() ui.nav_file(4) end)
 vim.keymap.set("n", "<A-6>", function() ui.nav_file(4) end)
-
