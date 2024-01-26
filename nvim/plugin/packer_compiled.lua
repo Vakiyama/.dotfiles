@@ -164,11 +164,6 @@ _G.packer_plugins = {
     path = "/home/Root/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["peek.nvim"] = {
-    loaded = true,
-    path = "/home/Root/.local/share/nvim/site/pack/packer/start/peek.nvim",
-    url = "https://github.com/toppair/peek.nvim"
-  },
   playground = {
     loaded = true,
     path = "/home/Root/.local/share/nvim/site/pack/packer/start/playground",
