@@ -15,23 +15,23 @@
     # migrate from configuration.nix when you have time/patience
 
     # scripts
-    (pkgs.writeShellScriptBin "xrandr-setup" ''
+    (writeShellScriptBin "xrandr-setup" ''
         xrandr --output HDMI-0 --auto --rate 165 --primary
         sudo virsh net-start default
     '')
-    (pkgs.writeShellScriptBin "scream-setup" ''
+    (writeShellScriptBin "scream-setup" ''
         scream -i virbr0 -p 4011 -u -v
     '')
-    (pkgs.writeShellScriptBin "replace-background" ''
+    (writeShellScriptBin "replace-background" ''
         feh --bg-scale ~/.config/bg.jpg
     '')
-    (pkgs.writeShellScriptBin "default-network" ''
+    (writeShellScriptBin "default-network" ''
         sudo virsh net-start default
     '')
-    (pkgs.writeShellScriptBin "gs" ''
+    (writeShellScriptBin "gs" ''
         git status
     '')
-    (pkgs.writeShellScriptBin "nd" ''
+    (writeShellScriptBin "nd" ''
         nix develop
     '')
     ];
@@ -79,6 +79,8 @@
 
             # launch starship prompt
             eval "$(starship init bash)"
+
+            # graveyard for rm-improved (rip)
         '';
     };
 

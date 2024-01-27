@@ -68,4 +68,12 @@ lsp.format_on_save({
 
 vim.diagnostic.config({
     virtual_text = true
+
+})
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    lsp.default_setup,
+  },
 })
