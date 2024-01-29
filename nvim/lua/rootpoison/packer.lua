@@ -70,5 +70,4 @@ return require('packer').startup(function(use)
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'tpope/vim-vinegar' 
     use 'nvim-tree/nvim-web-devicons'
-    use({ 'toppair/peek.nvim', run = 'bun task --quiet build:fast' })
 end)
