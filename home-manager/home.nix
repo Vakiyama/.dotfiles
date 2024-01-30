@@ -81,6 +81,7 @@
             eval "$(starship init bash)"
 
             # graveyard for rm-improved (rip)
+            export GRAVEYARD=$HOME/graveyard
         '';
     };
 
