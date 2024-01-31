@@ -70,4 +70,11 @@ return require('packer').startup(function(use)
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'tpope/vim-vinegar' 
     use 'nvim-tree/nvim-web-devicons'
+    use 
+    { 'folke/noice.nvim',
+      requires = {
+        {"MunifTanjim/nui.nvim"},
+        {"rcarriga/nvim-notify"},
+      },
+    }
 end)

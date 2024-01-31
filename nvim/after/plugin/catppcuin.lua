@@ -1,6 +1,11 @@
 require("catppuccin").setup({
     flavor = "frappe",
     transparent_background = true,     
+    integrations = {
+      cmp = true,
+      treesitter = true,
+      notify = true,
+    }
 })
 
 vim.cmd.colorscheme "catppuccin"
