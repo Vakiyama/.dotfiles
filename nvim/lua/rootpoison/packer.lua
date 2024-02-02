@@ -77,4 +77,5 @@ return require('packer').startup(function(use)
         {"rcarriga/nvim-notify"},
       },
     }
+    use { 'folke/zen-mode.nvim' }
 end)
