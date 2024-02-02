@@ -35,3 +35,10 @@
 
 # background
 !bg.jpg
+
+# rofi
+!rofi
+!rofi/*
+!rofi/*/*
+!rofi/*/*/*
+!rofi/*/*/*/*
