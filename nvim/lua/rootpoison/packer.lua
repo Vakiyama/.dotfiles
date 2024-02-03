@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 	use { "catppuccin/nvim", as = "catppuccin" }
-	use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+	use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 	use ('nvim-treesitter/playground')
 	use ('ThePrimeagen/harpoon')
 	use ('mbbill/undotree')
@@ -77,5 +77,15 @@ return require('packer').startup(function(use)
         {"rcarriga/nvim-notify"},
       },
     }
-    use { 'folke/zen-mode.nvim' }
+    use 'folke/zen-mode.nvim' 
+    use 'folke/twilight.nvim' 
+    use({
+      "epwalsh/obsidian.nvim",
+      tag = "*",  -- recommended, use latest release instead of latest commit
+      requires = { 
+        "nvim-lua/plenary.nvim", -- telescope already has this as a dep but idk
+      },
+    })
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    use 'preservim/vim-pencil'
 end)

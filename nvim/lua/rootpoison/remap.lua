@@ -51,4 +51,11 @@ vim.keymap.set("n", "<leader>rb", ":Refactor extract_block")
 vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
 
 -- zenmode
-vim.keymap.set("n", "<leader>zm", ":ZenMode<CR>")
+vim.keymap.set("n", "<leader>z", ":ZenMode<CR>")
+
+-- pencil
+vim.keymap.set("n", "<leader>p", ":TogglePencil<CR>");
+
+-- markdown preview
+vim.g.mkdp_markdown_css = '/home/Root/.config/nvim/after/plugin/markdown.css';
+
