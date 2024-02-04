@@ -9,6 +9,10 @@ require("obsidian").setup({
       name = "school",
       path = "~/vaults/school",
     },
+    {
+      name = "work",
+      path = "~/vaults/work",
+    },
   },
 
   mappings = {

@@ -4,7 +4,7 @@ require("zen-mode").setup({
   },
   plugins = {
     tmux = { enabled = true },
-    twilight = { enabled = true },
+    twilight = { enabled = false },
   },
 })
 
