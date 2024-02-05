@@ -13,6 +13,7 @@ require("presence").setup({
         "work/app",
         "work/franchise",
         "cs2-financing",
+        "notes",
     },                         -- A list of strings or Lua patterns that disable Rich Presence if the current file name, path, or workspace matches
     buttons             = true,                       -- Configure Rich Presence button(s), either a boolean to enable/disable, a static table (`{{ label = "<label>", url = "<url>" }, ...}`, or a function(buffer: string, repo_url: string|nil): table)
     file_assets         = {
