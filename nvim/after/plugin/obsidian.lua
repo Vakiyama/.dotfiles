@@ -2,16 +2,8 @@ require("obsidian").setup({
   detect_cwd = true,
   workspaces = {
     {
-      name = "personal",
-      path = "~/vaults/personal",
-    },
-    {
-      name = "school",
-      path = "~/vaults/school",
-    },
-    {
-      name = "work",
-      path = "~/vaults/work",
+      name = "notes",
+      path = "~/vaults/notes",
     },
   },
 
