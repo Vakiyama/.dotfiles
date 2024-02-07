@@ -33,12 +33,7 @@ require('lualine').setup {
         require("noice").api.status.command.get,
         cond = require("noice").api.status.command.has,
         color = { fg = "#99d1db" },
-      },
-      {
-        require("noice").api.status.mode.get,
-        cond = require("noice").api.status.mode.has,
-        color = { fg = "#99d1db" },
-      },
+      }
   },
     lualine_y = {},
     lualine_z = {}
@@ -54,5 +49,5 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = { "oil" }
 }
