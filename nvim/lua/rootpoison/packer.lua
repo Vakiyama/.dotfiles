@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
 	}};
 	-- use ('github/copilot.vim')
 	use ('f-person/git-blame.nvim') -- for blaming my coworkers
-	use ('prichrd/netrw.nvim') -- nicer netrw
+	-- use ('prichrd/netrw.nvim') -- nicer netrw
     use ({
         'folke/trouble.nvim',
         config = function()
@@ -58,14 +58,14 @@ return require('packer').startup(function(use)
             }
         end
     })
-    use ({ 'ThePrimeagen/git-worktree.nvim' })
+    use 'ThePrimeagen/git-worktree.nvim' 
 
     -- refactoring plugin 
-    use ({ 'ThePrimeagen/refactoring.nvim' })
+    use 'ThePrimeagen/refactoring.nvim' 
 
-    -- use 'stevearc/oil.nvim'
+    use ({ 'stevearc/oil.nvim'  })
     use 'ThePrimeagen/vim-apm'
-    use 'andweeb/presence.nvim'
+    use 'Vakiyama/presence.nvim' 
     use 'MunifTanjim/prettier.nvim'
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'tpope/vim-vinegar' 
