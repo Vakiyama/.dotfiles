@@ -92,7 +92,7 @@ require("noice").setup({
     -- event is always "notify" and kind can be any log level as a string
     -- The default routes will forward notifications to nvim-notify
     -- Benefit of using Noice for this is the routing and consistent history view
-    enabled = true,
+    enabled = false,
     view = "notify",
   },
   lsp = {
@@ -139,18 +139,6 @@ require("noice").setup({
       enabled = true,
       view = "notify",
       opts = {},
-    },
-    -- defaults for hover and signature help
-    documentation = {
-      view = "hover",
-      ---@type NoiceViewOptions
-      opts = {
-        lang = "markdown",
-        replace = true,
-        render = "plain",
-        format = { "{message}" },
-        win_options = { concealcursor = "n", conceallevel = 3 },
-      },
     },
   },
   markdown = {

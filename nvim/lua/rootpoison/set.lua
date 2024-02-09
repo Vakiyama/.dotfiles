@@ -25,3 +25,7 @@ vim.opt.updatetime = 50
 -- remove netrw info banner
 vim.opt.fillchars = {eob = " "}
 vim.g.netrw_banner = 0
+
+vim.opt.conceallevel = 1
+
+vim.api.nvim_set_var('pencil#conceallevel', 2)
