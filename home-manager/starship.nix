@@ -70,6 +70,10 @@
                 format = "\\[[$symbol($version)]($style)\\]";
                 symbol = "ocaml ";
             };
+            golang = { 
+                format = "\\[[$symbol($version)]($style)\\]";
+                symbol = "go ";
+            };
         };
     };
 }
