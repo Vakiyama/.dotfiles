@@ -90,4 +90,5 @@ return require('packer').startup(function(use)
     use 'preservim/vim-pencil'
     use 'tpope/vim-dadbod'
     use 'kristijanhusak/vim-dadbod-ui'
+    use 'kristijanhusak/vim-dadbod-completion'
 end)

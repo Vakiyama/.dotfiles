@@ -59,3 +59,6 @@ vim.keymap.set("n", "<leader>p", ":TogglePencil<CR>");
 -- markdown preview
 vim.g.mkdp_markdown_css = '/home/Root/.config/nvim/after/plugin/markdown.css';
 
+-- db-ui
+--
+vim.keymap.set("n", "<leader>dv", ":DBUIToggle<CR>");

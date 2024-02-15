@@ -53,6 +53,30 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
+-- This block should come after lsp.setup()
+cmp.setup({
+  -- Existing configuration...
+  mapping = cmp_mappings,
+  sources = cmp.config.sources({
+    { name = 'vim-dadbod-completion' },
+    -- Add more sources as needed
+  }),
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        rg = '[Rg]',
+        buffer = '[Buffer]',
+        nvim_lsp = '[LSP]',
+        vsnip = '[Snippet]',
+        tags = '[Tag]',
+        path = '[Path]',
+        orgmode = '[Org]',
+        ['vim-dadbod-completion'] = '[DB]',
+      })[entry.source.name]
+      return vim_item
+    end,
+  }
+})
 
 lsp.format_on_save({
   format_opts = {
