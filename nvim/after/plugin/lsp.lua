@@ -59,6 +59,7 @@ cmp.setup({
   mapping = cmp_mappings,
   sources = cmp.config.sources({
     { name = 'vim-dadbod-completion' },
+    { name = 'nvim_lsp' },
     -- Add more sources as needed
   }),
   formatting = {
