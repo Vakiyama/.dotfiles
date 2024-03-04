@@ -4,6 +4,12 @@
 # me! 
 !.gitignore
 
+# better discord
+!BetterDiscord/
+!BetterDiscord/*
+!BetterDiscord/*/*
+!BetterDiscord/*/*/*
+
 !README.md
 
 # home-manager

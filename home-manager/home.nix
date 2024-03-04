@@ -23,7 +23,7 @@
         scream -i virbr0 -p 4011 -u -v
     '')
     (writeShellScriptBin "replace-background" ''
-        feh --bg-scale ~/.config/bg.jpg
+        feh --bg-scale ~/.config/bg.png
     '')
     (writeShellScriptBin "default-network" ''
         sudo virsh net-start default
