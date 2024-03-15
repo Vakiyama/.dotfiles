@@ -79,6 +79,26 @@ cmp.setup({
   }
 })
 
+local lspconfig = require('lspconfig')
+
+-- Configuring the Gleam LSP
+lspconfig.gleam.setup({})
+
+vim.api.nvim_create_user_command('FormatAndSaveGleam', function()
+  vim.cmd('write')                    -- Save the file
+  vim.cmd('silent !gleam format %')  -- Run the formatter on the current file
+  vim.cmd('edit!')                    -- Force reload the file from disk
+  vim.cmd('write')                    -- Save the file
+end, {})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.gleam",
+  callback = function()
+    vim.cmd('FormatAndSaveGleam')
+  end,
+})
+
+
 lsp.format_on_save({
   format_opts = {
     async = false,

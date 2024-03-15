@@ -34,7 +34,25 @@
     (writeShellScriptBin "nd" ''
         nix develop
     '')
-    (writeShellScriptBin "backup-notes" ''
+    (writeShellScriptBin "fs" ''
+
+# Path to package.json
+    PACKAGE_JSON="./package.json"
+
+# Check if package.json exists in the current directory
+    if [ -f "$PACKAGE_JSON" ]; then
+        
+        # Extract scripts using jq and check if scripts are defined
+        SCRIPTS=$(jq '.scripts' $PACKAGE_JSON)
+        if [ "$SCRIPTS" != "null" ]; then
+            # List each script
+            echo "$SCRIPTS" | jq -r 'to_entries|map("\(.key): \(.value)")|.[]'
+        else
+            echo "No scripts are defined in package.json."
+        fi
+    else
+        echo "package.json not found in the current directory."
+    fi
     '')
   ];
 
