@@ -92,5 +92,5 @@ return require('packer').startup(function(use)
     use 'kristijanhusak/vim-dadbod-ui'
     use 'kristijanhusak/vim-dadbod-completion'
     use 'AckslD/nvim-neoclip.lua'
-    use 'gleam-lang/gleam.vim'
+    use 'gleam-lang/gleam.vim
 end)

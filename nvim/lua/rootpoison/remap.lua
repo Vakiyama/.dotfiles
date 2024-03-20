@@ -17,6 +17,10 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "Q", "<nop>")
 
+-- replace custom
+vim.keymap.set("n", "<leader>fr", [[:%s/]])
+
+-- replace occurences of current word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- open filetree

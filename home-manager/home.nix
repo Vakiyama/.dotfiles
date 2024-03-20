@@ -35,24 +35,32 @@
         nix develop
     '')
     (writeShellScriptBin "fs" ''
+    # ANSI color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
 # Path to package.json
-    PACKAGE_JSON="./package.json"
+PACKAGE_JSON="./package.json"
 
 # Check if package.json exists in the current directory
-    if [ -f "$PACKAGE_JSON" ]; then
-        
-        # Extract scripts using jq and check if scripts are defined
-        SCRIPTS=$(jq '.scripts' $PACKAGE_JSON)
-        if [ "$SCRIPTS" != "null" ]; then
-            # List each script
-            echo "$SCRIPTS" | jq -r 'to_entries|map("\(.key): \(.value)")|.[]'
-        else
-            echo "No scripts are defined in package.json."
-        fi
+if [ -f "$PACKAGE_JSON" ]; then
+    
+    # Check if scripts are defined
+    if jq -e '.scripts' "$PACKAGE_JSON" > /dev/null; then
+        # Process each script entry
+        jq -r '.scripts | to_entries | .[] | .key + ": " + .value' "$PACKAGE_JSON" | while IFS= read -r line; do
+            KEY=$(echo "$line" | cut -d ':' -f 1)
+            VALUE=$(echo "$line" | cut -d ':' -f 2-)
+            echo -e "$GREEN $KEY: $NC $VALUE"
+        done
     else
-        echo "package.json not found in the current directory."
+        echo -e " $RED No scripts are defined in package.json. $NC"
     fi
+else
+    echo -e " $RED package.json not found in the current directory. $NC"
+fi
     '')
   ];
 
