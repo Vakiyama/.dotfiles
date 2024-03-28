@@ -1,1 +1,12 @@
-{}
+{
+    "PluginRepo": true,
+    "BDFDB": true,
+    "WhoReacted": true,
+    "ViewProfilePicture": true,
+    "InvisibleTyping": true,
+    "BetterVolume": true,
+    "TypingIndicator": true,
+    "ZeresPluginLibrary": true,
+    "FriendNotifications": true,
+    "BetterAnimations": false
+}
