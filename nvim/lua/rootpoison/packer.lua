@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
     })
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
     use 'preservim/vim-pencil'
-    use 'Vakiyama/vim-dadbod'
+    use 'tpope/vim-dadbod'
     use 'kristijanhusak/vim-dadbod-ui'
     use 'kristijanhusak/vim-dadbod-completion'
     use 'AckslD/nvim-neoclip.lua'

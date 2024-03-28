@@ -8,12 +8,12 @@ prettier.setup({
     "javascript",
     "javascriptreact",
     "json",
-    "markdown",
     "typescript",
     "typescriptreact",
     "yaml",
     "lua",
     "nix",
+    "ejs",
   },
   cli_options = {
     arrow_parens = "always",
@@ -38,6 +38,6 @@ prettier.setup({
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.md", "*.nix", "*.ml"},
+    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.nix", "*.ml", "*.ejs", "*.html"},
     command = "Prettier"
 })
