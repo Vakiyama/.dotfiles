@@ -35,9 +35,6 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 -- toggle git blame
 vim.keymap.set("n", "<leader>b", vim.cmd.GitBlameToggle)
 
--- visual block remap
-vim.keymap.set("n", "<leader>vb", "<C-v>")
-
 -- copilot toggle
 -- vim.api.nvim_set_keymap("n", "<leader>ct", ":Copilot<CR>", { noremap = true, silent = true })
 
