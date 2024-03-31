@@ -1,7 +1,7 @@
 {
     "PluginRepo": true,
     "BDFDB": true,
-    "WhoReacted": true,
+    "WhoReacted": false,
     "ViewProfilePicture": true,
     "InvisibleTyping": true,
     "BetterVolume": true,
