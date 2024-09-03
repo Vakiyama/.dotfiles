@@ -108,6 +108,7 @@ lsp.format_on_save({
     ['tsserver'] = {'javascript', 'typescript'},
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
+    ['pyright'] = {'python'}
   }
 })
 

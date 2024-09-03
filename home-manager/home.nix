@@ -34,6 +34,9 @@
     (writeShellScriptBin "nd" ''
         nix develop
     '')
+    (writeShellScriptBin "pulseshitter" ''
+        bash ~/pulseshitter
+    '')
     (writeShellScriptBin "fs" ''
     # ANSI color codes
 RED='\033[0;31m'
@@ -126,6 +129,11 @@ fi
               credential.helper = "store";
           };
         };
+        direnv = {
+          enable = true;
+          enableBashIntegration = true; # see note on other shells below
+          nix-direnv.enable = true;
+      };
     };
 
     # Let Home Manager install and manage itself.
