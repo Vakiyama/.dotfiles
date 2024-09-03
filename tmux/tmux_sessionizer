@@ -8,7 +8,7 @@ export FZF_DEFAULT_OPTS=" \
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(printf "%s\n" "$HOME"  $(find /etc/nixos ~/vaults ~/.config ~/projects ~/work ~/school/term-2 ~/misc -mindepth 0 -maxdepth 1 -type d) | fzf)
+    selected=$(printf "%s\n" "$HOME"  $(find /etc/nixos ~/vaults ~/.config ~/projects ~/work ~/school/term-3 ~/misc -mindepth 0 -maxdepth 1 -type d) | fzf)
 fi
 
 if [[ -z $selected ]]; then
