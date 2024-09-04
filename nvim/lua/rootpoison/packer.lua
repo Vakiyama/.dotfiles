@@ -92,6 +92,6 @@ return require('packer').startup(function(use)
     use 'kristijanhusak/vim-dadbod-ui'
     use 'kristijanhusak/vim-dadbod-completion'
     use 'AckslD/nvim-neoclip.lua'
-    use 'gleam-lang/gleam.vim'
     use 'OlegGulevskyy/better-ts-errors.nvim'
+    use 'itchyny/calendar.vim'
 end)
