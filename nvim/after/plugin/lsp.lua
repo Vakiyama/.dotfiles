@@ -99,6 +99,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
+require'lspconfig'.csharp_ls.setup{}
+
 lsp.format_on_save({
   format_opts = {
     async = false,
@@ -108,7 +110,8 @@ lsp.format_on_save({
     ['tsserver'] = {'javascript', 'typescript'},
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
-    ['pyright'] = {'python'}
+    ['pyright'] = {'python'},
+    ['csharp-language-server'] = {'csharp'}
   }
 })
 

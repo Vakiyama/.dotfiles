@@ -1,4 +1,4 @@
-{ home, ... }:
+{ ... }:
 
 {
     programs.starship = {
@@ -73,6 +73,10 @@
             golang = { 
                 format = "\\[[$symbol($version)]($style)\\]";
                 symbol = "go ";
+            };
+            dotnet = {
+                format = "\\[[$symbol($version)](bold #85c1dc)\\]";
+                symbol = "dotnet ";
             };
         };
     };

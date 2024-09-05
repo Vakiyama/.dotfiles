@@ -15,6 +15,7 @@ prettier.setup({
     "nix",
     "ejs",
     "python",
+    "csharp",
   },
   cli_options = {
     arrow_parens = "always",
