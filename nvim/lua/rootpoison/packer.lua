@@ -53,8 +53,6 @@ return require('packer').startup(function(use)
         'folke/trouble.nvim',
         config = function()
             require("trouble").setup {
-                icons = false,
-                use_diagnostic_signs = true,
             }
         end
     })
@@ -94,4 +92,11 @@ return require('packer').startup(function(use)
     use 'AckslD/nvim-neoclip.lua'
     use 'OlegGulevskyy/better-ts-errors.nvim'
     use 'itchyny/calendar.vim'
+    use ({'boganworld/crackboard.nvim',
+        config = function()
+        require('crackboard').setup({
+          session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
+        })
+      end,
+    })
 end)

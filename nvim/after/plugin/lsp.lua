@@ -3,9 +3,10 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
+  'ts_ls',
   'rust_analyzer',
   'nil_ls',
+  'omnisharp'
 })
 
 -- Fix Undefined global 'vim'
@@ -91,15 +92,38 @@ vim.api.nvim_create_user_command('FormatAndSaveGleam', function()
   vim.cmd('write')                    -- Save the file
 end, {})
 
+-- Define a command to format and save C# files
+vim.api.nvim_create_user_command('FormatAndSaveCsharp', function()
+  vim.cmd('write')  -- Save the file
+  
+  -- Run the formatter and capture the result
+  local result = vim.fn.system('dotnet csharpier ' .. vim.fn.expand('%'))
+  
+  -- Check if there was an error
+  if vim.v.shell_error ~= 0 then
+    print('Error running csharpier: ' .. result)
+    return
+  end
+  
+  vim.cmd('edit!')  -- Reload the file from disk
+  vim.cmd('write')  -- Save the file again
+end, {})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.gleam",
+  pattern = "*.cs",
   callback = function()
-    vim.cmd('FormatAndSaveGleam')
+    vim.cmd('FormatAndSaveCsharp')
   end,
 })
 
 
-require'lspconfig'.csharp_ls.setup{}
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.gleam",
+--   callback = function()
+--     vim.cmd('FormatAndSaveGleam')
+--   end,
+-- })
+
 
 lsp.format_on_save({
   format_opts = {
@@ -111,7 +135,7 @@ lsp.format_on_save({
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
     ['pyright'] = {'python'},
-    ['csharp-language-server'] = {'csharp'}
+    ['omnisharp'] = {'csharp'}
   }
 })
 
