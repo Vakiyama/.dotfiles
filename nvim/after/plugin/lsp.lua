@@ -116,6 +116,42 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- lua format on save
+if vim.fn.executable('lua-format')
+  then
+      vim.api.nvim_create_user_command('FormatAndSaveLua', function()
+          vim.cmd('write')
+          vim.cmd('silent !lua-format %')
+          vim.cmd('edit!')
+          vim.cmd('write')
+      end, {})
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.lua",
+          callback = function()
+              vim.cmd('FormatAndSaveLua')
+          end,
+      })
+  end
+
+-- nix format on save
+if vim.fn.executable('nixfmt')
+  then
+      vim.api.nvim_create_user_command('FormatAndSaveNix', function()
+          vim.cmd('write')
+          vim.cmd('silent !nixpkgs-fmt %')
+          vim.cmd('edit!')
+          vim.cmd('write')
+      end, {})
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.nix",
+          callback = function()
+              vim.cmd('FormatAndSaveNix')
+          end,
+      })
+  end
+
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --   pattern = "*.gleam",
