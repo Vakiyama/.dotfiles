@@ -13,7 +13,7 @@
   # environment.
   home.packages = with pkgs; [
     xborders
-    inputs.zen-flake.packages.${pkgs.system}.default
+    # inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
 
     # scripts
