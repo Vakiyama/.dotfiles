@@ -131,7 +131,7 @@ lsp.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
-    ['tsserver'] = {'javascript', 'typescript'},
+    ['ts_ls'] = {'javascript', 'typescript'},
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
     ['pyright'] = {'python'},
