@@ -8,11 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
 
     # Add your Zen Browser flake
     zen-flake = {
       # Replace '~/zen-flake' with the actual path to your Zen Browser flake
-      url = "path:./zen";
+      url = "/home/Root/.config/home-manager/zen";
     };
   };
 
@@ -20,7 +21,8 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       homeConfigurations.Root = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 

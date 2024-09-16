@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1725509983,
+        "narHash": "sha256-NHCgHVqumPraFJnLrkanoLDuhOoUHUvRhvp/RIHJR+A=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "45745fe5960acaefef2b60f3455bcac6a0ca6bc9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -54,6 +69,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "zen-flake": "zen-flake"
@@ -64,14 +80,18 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-BZu6C84jVTWnE8M0M3bG7nRifcq6ttQLiQ9AUsDgRiA=",
-        "path": "./zen",
-        "type": "path"
+        "dir": "home-manager/zen",
+        "dirtyRev": "f503d3c2033deffadad17456ae869b8dcaa41f34-dirty",
+        "dirtyShortRev": "f503d3c-dirty",
+        "lastModified": 1726457751,
+        "narHash": "sha256-3qaugJXljZdHq98czkcr9YLYdHRB/qWQE2RxTyaQb7w=",
+        "type": "git",
+        "url": "file:///home/Root/.config?dir=home-manager/zen"
       },
       "original": {
-        "path": "./zen",
-        "type": "path"
+        "dir": "home-manager/zen",
+        "type": "git",
+        "url": "file:///home/Root/.config?dir=home-manager/zen"
       }
     }
   },

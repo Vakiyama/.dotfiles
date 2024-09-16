@@ -9,6 +9,10 @@
 
   home.stateVersion = "22.11"; # do not change
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = builtins.readFile ./hyprland.conf;
+  };
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -22,6 +26,7 @@
     win-virtio
     win-spice
     gnome.adwaita-icon-theme
+    hyprpaper
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
@@ -146,6 +151,56 @@
       enableBashIntegration = true; # see note on other shells below
       nix-direnv.enable = true;
     };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
+  gtk = {
+    enable = true;
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        font = "FiraCode:size=16";
+        icons-enabled = false;
+      };
+      border = {
+        width = 4;
+      };
+      colors = {
+        background = "303446dd";
+        text = "c6d0f5ff";
+        match = "ca9ee6ff";
+        selection = "626880ff";
+        selection-match = "ca9ee6ff";
+        selection-text = "c6d0f5ff";
+        border = "babbf1ff";
+      };
+    };
+  };
+
+  services.mako = {
+    enable = true;
+    defaultTimeout = 4000;
+    extraConfig = ''
+      background-color=#303446
+      text-color=#c6d0f5
+      border-color=#ca9ee6
+      progress-color=over #414559
+      border-radius=10
+      border-size=2
+      padding=8
+
+      [urgency=high]
+      border-color=#ef9f76
+    '';
   };
 
   # Let Home Manager install and manage itself.
