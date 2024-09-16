@@ -13,7 +13,17 @@
   # environment.
   home.packages = with pkgs; [
     xborders
-    # inputs.zen-flake.packages.${pkgs.system}.default
+    # vm stuff
+    virt-manager
+    virt-viewer
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
+
+    inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
 
     # scripts
@@ -102,31 +112,27 @@
           --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284";
   };
 
-  programs.bash = {
-    enable = true;
-    bashrcExtra = ''
-      # tmux autostart
-      if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-          if tmux has-session &>/dev/null; then
-              tmux attach-session
-          else
-              tmux new-session
-          fi
-      fi
-
-      # launch starship prompt
-      eval "$(starship init bash)"
-
-      # graveyard for rm-improved (rip)
-      export GRAVEYARD=$HOME/graveyard
-
-      # setup wm and background
-      replace-background
-      xborders --border-red 202 --border-green 158 --border-blue 230 --border-width 2
-    '';
-  };
 
   programs = {
+    bash = {
+      enable = true;
+      bashrcExtra = ''
+        # tmux autostart
+        if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+            if tmux has-session &>/dev/null; then
+                tmux attach-session
+            else
+                tmux new-session
+            fi
+        fi
+
+        # launch starship prompt
+        eval "$(starship init bash)"
+
+        # graveyard for rm-improved (rip)
+        export GRAVEYARD=$HOME/graveyard
+      '';
+    };
     git = {
       enable = true;
       userName = "Vakiyama";
