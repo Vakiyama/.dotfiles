@@ -8,9 +8,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Add your Zen Browser flake
+    zen-flake = {
+      # Replace '~/zen-flake' with the actual path to your Zen Browser flake
+      url = "path:./zen";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -18,12 +24,16 @@
       homeConfigurations.Root = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
+        # Pass the inputs to your Home Manager configuration
+        extraSpecialArgs = {
+          # Access 'inputs' via 'self.inputs'
+          inputs = self.inputs;
+        };
+
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
+
