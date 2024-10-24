@@ -14,7 +14,6 @@
   home.packages = with pkgs; [
     xborders
     # vm stuff
-    virt-manager
     virt-viewer
     spice
     spice-gtk
@@ -23,6 +22,9 @@
     win-spice
     gnome.adwaita-icon-theme
     hyprpaper
+    git-credential-manager
+    xfce.thunar
+    bluetuith
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
@@ -136,8 +138,6 @@
     };
     git = {
       enable = true;
-      userName = "Vakiyama";
-      userEmail = "vakiyama@outlook.com";
       extraConfig = {
         credential.helper = "store";
       };
@@ -165,7 +165,7 @@
     settings = {
       main = {
         font = "FiraCode:size=16";
-        icons-enabled = false;
+        icons-enabled = true;
       };
       border = {
         width = 4;
