@@ -153,12 +153,59 @@ if vim.fn.executable('nixfmt')
   end
 
 
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.gleam",
---   callback = function()
---     vim.cmd('FormatAndSaveGleam')
---   end,
--- })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.gleam",
+  callback = function()
+    vim.cmd('FormatAndSaveGleam')
+  end,
+})
+
+
+local lsp_configurations = require('lspconfig.configs')
+
+-- if vim.loop.os_uname().sysname == "Linux" then
+--             local command = [[
+--                 source /etc/os-release;
+--                 echo $NAME
+--             ]]
+--             local handle = io.popen(command)
+--             if handle ~= nil then
+--                 local distro = handle:read("*a")
+-- 
+--                 if distro:match("NixOS") ~= nil then
+--                     if vim.fn.executable('lua-language-server') == 1 and
+--                         not lsp_configurations.lua_lsp
+--                     then
+--                         lsp_configurations.lua_lsp = {
+--                             default_config = {
+--                                 name = 'lua-language-server',
+--                                 cmd = { 'lua-language-server' },
+--                                 filetypes = { 'lua' },
+--                                 root_dir = lspconfig.root_pattern('init.lua')
+--                             }
+--                         }
+--                         lspconfig.lua_lsp.setup({})
+--                     end
+--                 end
+-- 
+--                 handle:close()
+--             end
+--         end
+
+if
+    vim.fn.executable('rust-analyzer') == 1 and
+    not lsp_configurations.rustlsp
+then
+    lsp_configurations.rustlsp = {
+        default_config = {
+            name = 'rust',
+            cmd = { 'rust-analyzer' },
+            filetypes = { 'rust' },
+            root_dir = require('lspconfig.util').root_pattern('flake.nix')
+        }
+    }
+    lspconfig.rustlsp.setup({})
+end
 
 
 lsp.format_on_save({
@@ -177,8 +224,7 @@ lsp.format_on_save({
 
 vim.diagnostic.config({
     virtual_text = true
-
-})
+}) 
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
