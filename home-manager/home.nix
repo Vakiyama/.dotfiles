@@ -23,6 +23,8 @@
     win-spice
     gnome.adwaita-icon-theme
     hyprpaper
+    brightnessctl
+    wl-clipboard
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
@@ -49,6 +51,9 @@
     '')
     (writeShellScriptBin "pulseshitter" ''
       bash ~/pulseshitter
+    '')
+    (writeShellScriptBin "power" ''
+      cat /sys/class/power_supply/BAT0/capacity
     '')
     (writeShellScriptBin "fs" ''
           # ANSI color codes
@@ -136,10 +141,8 @@
     };
     git = {
       enable = true;
-      userName = "Vakiyama";
-      userEmail = "vakiyama@outlook.com";
       extraConfig = {
-        credential.helper = "store";
+       credential.helper = "store";
       };
     };
     direnv = {
