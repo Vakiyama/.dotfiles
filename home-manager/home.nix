@@ -14,7 +14,6 @@
   home.packages = with pkgs; [
     xborders
     # vm stuff
-    virt-manager
     virt-viewer
     spice
     spice-gtk
@@ -25,6 +24,9 @@
     hyprpaper
     brightnessctl
     wl-clipboard
+    git-credential-manager
+    xfce.thunar
+    bluetuith
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
@@ -168,7 +170,7 @@
     settings = {
       main = {
         font = "FiraCode:size=16";
-        icons-enabled = false;
+        icons-enabled = true;
       };
       border = {
         width = 4;
