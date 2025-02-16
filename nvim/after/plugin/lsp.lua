@@ -93,6 +93,21 @@ vim.api.nvim_create_user_command('FormatAndSaveGleam', function()
 end, {})
 
 -- Define a command to format and save C# files
+vim.api.nvim_create_user_command('FormatAndSavePHP', function()
+  vim.cmd('write')  -- Save the file
+  vim.cmd('silent !php-cs-fixer fix %')  -- Run the formatter on the current file
+  vim.cmd('edit!')  -- Reload the file from disk
+  vim.cmd('write')  -- Save the file again
+end, {})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.php",
+  callback = function()
+    vim.cmd('FormatAndSavePHP')
+  end,
+})
+
+-- Define a command to format and save C# files
 vim.api.nvim_create_user_command('FormatAndSaveCsharp', function()
   vim.cmd('write')  -- Save the file
   
@@ -218,7 +233,8 @@ lsp.format_on_save({
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
     ['pyright'] = {'python'},
-    ['omnisharp'] = {'csharp'}
+    ['omnisharp'] = {'csharp'},
+    ['phpactor'] = {'php'}
   }
 })
 

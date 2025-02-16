@@ -16,6 +16,7 @@ prettier.setup({
     "ejs",
     "python",
     "csharp",
+    "php",
   },
   cli_options = {
     arrow_parens = "always",
@@ -40,6 +41,6 @@ prettier.setup({
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.nix", "*.ml", "*.ejs", "*.html", "*.py"},
+    pattern = {"*.js", "*.jsx", "*.ts", "*.tsx", "*.css", "*.json", "*.nix", "*.ml", "*.ejs", "*.html", "*.py" , "*.php"},
     command = "Prettier"
 })

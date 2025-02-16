@@ -8,15 +8,14 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use { 'christoomey/vim-tmux-navigator', lazy = false } -- navigate between vim and tmux panes seamlessly
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		-- or                            , branch = '0.1.x',
+		'nvim-telescope/telescope.nvim',
 		requires = {
             {'nvim-lua/plenary.nvim'},
             {'nvim-lua/popup.nvim'},
             {'nvim-telescope/telescope-fzy-native.nvim'},
         }
 	}
-	use ('nvim-treesitter/nvim-treesitter-context')
+	use {'nvim-treesitter/nvim-treesitter-context', commit = "f6c99b64111ab1424c8fde3d9a6f3cd08234f8cb" }
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -92,11 +91,11 @@ return require('packer').startup(function(use)
     use 'AckslD/nvim-neoclip.lua'
     use 'OlegGulevskyy/better-ts-errors.nvim'
     use 'itchyny/calendar.vim'
-    use ({'boganworld/crackboard.nvim',
-        config = function()
-        require('crackboard').setup({
-          session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
-        })
-      end,
-    })
+    -- use ({'boganworld/crackboard.nvim',
+    --     config = function()
+    --     require('crackboard').setup({
+    --       session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
+    --     })
+    --   end,
+    -- })
 end)
