@@ -9,6 +9,7 @@
 
   home.stateVersion = "22.11"; # do not change
 
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -20,12 +21,14 @@
     spice-protocol
     win-virtio
     win-spice
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     hyprpaper
     git-credential-manager
     xfce.thunar
     bluetuith
     deno
+
+
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
