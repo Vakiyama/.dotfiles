@@ -6,16 +6,19 @@ blink.setup({
       download = false,
     }
   },
+ -- Error detected while processing /home/Root/.config/nvim/after/plugin/blink.lua:
+ -- E5112: Error while creating lua chunk: /home/Root/.config/nvim/after/plugin/blink.lua:9: '}' expected (to close '{' at line 2) near '='
+
+  completion = {
+    menu = {
+      draw = {
+        columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'source_name' } },
+      },
+    },
+  },
 })
 
 local lspconfig = require('lspconfig')
-local capabilities = blink.get_lsp_capabilities()
-
--- Setup tsserver (or ts_ls if that's your server) with the updated capabilities
-lspconfig.ts_ls.setup({
-  capabilities = capabilities,
-  -- add any other tsserver options here
-})
 
   -- config = function(_, opts)
   --   local lspconfig = require('lspconfig')

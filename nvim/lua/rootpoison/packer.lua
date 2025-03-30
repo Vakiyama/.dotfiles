@@ -51,30 +51,16 @@ return require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
-    requires = { 'saghen/blink.cmp' },
 
-    -- config = function()
-    --   local lspconfig = require('lspconfig')
-    --   local blink_cmp = require('blink.cmp')
-    --   local capabilities = blink_cmp.get_lsp_capabilities()
-
-    --   -- Setup tsserver (or ts_ls if that's your server) with the updated capabilities
-    --   lspconfig.tsserver.setup({
-    --     capabilities = capabilities,
-    --     -- add any other tsserver options here
-    --   })
-    -- end
+    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
   }
   
 
   use {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    dependencies = { 'rafamadriz/friendly-snippets' },
 
-    opts = {
-      snippets = { preset = 'luasnip' },
-    }
     -- use a release tag to download pre-built binaries
     -- build = 'nix run .#build-plugin',
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
