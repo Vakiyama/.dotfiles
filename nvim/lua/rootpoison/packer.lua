@@ -51,38 +51,30 @@ return require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
+    requires = { 'saghen/blink.cmp' },
 
-    -- example using `opts` for defining servers
-    -- opts = {
-    --   servers = {
-    --     lua_ls = {}
-    --   }
-    -- },
-    -- config = function(_, opts)
+    -- config = function()
     --   local lspconfig = require('lspconfig')
-    --   for server, config in pairs(opts.servers) do
-    --     -- passing config.capabilities to blink.cmp merges with the capabilities in your
-    --     -- `opts[server].capabilities, if you've defined it
-    --     config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-    --     lspconfig[server].setup(config)
-    --   end
+    --   local blink_cmp = require('blink.cmp')
+    --   local capabilities = blink_cmp.get_lsp_capabilities()
+
+    --   -- Setup tsserver (or ts_ls if that's your server) with the updated capabilities
+    --   lspconfig.tsserver.setup({
+    --     capabilities = capabilities,
+    --     -- add any other tsserver options here
+    --   })
     -- end
-
-   -- -- example calling setup directly for each LSP
-   --  config = function()
-   --    local capabilities = require('blink.cmp').get_lsp_capabilities()
-   --    local lspconfig = require('lspconfig')
-
-   --    lspconfig['lua_ls'].setup({ capabilities = capabilities })
-   --  end
   }
   
 
   use {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
 
+    opts = {
+      snippets = { preset = 'luasnip' },
+    }
     -- use a release tag to download pre-built binaries
     -- build = 'nix run .#build-plugin',
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
