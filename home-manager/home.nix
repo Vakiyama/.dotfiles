@@ -9,6 +9,7 @@
 
   home.stateVersion = "22.11"; # do not change
 
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -27,6 +28,9 @@
     git-credential-manager
     xfce.thunar
     bluetuith
+    deno
+
+
 
     inputs.zen-flake.packages.${pkgs.system}.default
     # migrate from configuration.nix when you have time/patience
@@ -203,9 +207,11 @@
       border-radius=10
       border-size=2
       padding=8
+      on-notify=exec makoctl menu wofi -d -p 'Choose Action: '
 
       [urgency=high]
       border-color=#ef9f76
+
     '';
   };
 

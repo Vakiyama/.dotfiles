@@ -64,3 +64,18 @@ vim.g.mkdp_markdown_css = '/home/Root/.config/nvim/after/plugin/markdown.css';
 --
 vim.keymap.set("n", "<leader>dv", ":DBUIToggle<CR>");
 
+-- lazy shift
+vim.cmd([[
+  command! -bar -nargs=* -complete=file -range=% -bang W         <line1>,<line2>write<bang> <args>
+  command! -bar -nargs=* -complete=file -range=% -bang Write     <line1>,<line2>write<bang> <args>
+  command! -bar -nargs=* -complete=file -range=% -bang Wq        <line1>,<line2>wq<bang> <args>
+  command! -bar                                  -bang Wa     wa
+  command! -bar                                  -bang Wqall     wqa
+  command! -bar                                  -bang Q         quit
+  command! -bar                                  -bang Quit      quit
+  command! -bar                                  -bang Qall      qall
+  command! -bar -nargs=? -complete=option              Set       set <args>
+  command! -bar -nargs=? -complete=help                Help      help <args>
+  command! -bar                                        Messages  messages
+]])
+

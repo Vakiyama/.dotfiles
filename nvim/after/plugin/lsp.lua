@@ -1,41 +1,14 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'ts_ls',
-  'rust_analyzer',
-  'nil_ls',
-  'omnisharp'
-})
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
-
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = ' ',
-        warn = ' ',
-        hint = ' ',
-        info = ''
-    }
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] =' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
+      [vim.diagnostic.severity.INFO] = '',
+    },
+  },
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -44,7 +17,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
@@ -54,31 +27,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
--- This block should come after lsp.setup()
-cmp.setup({
-  -- Existing configuration...
-  mapping = cmp_mappings,
-  sources = cmp.config.sources({
-    { name = 'vim-dadbod-completion' },
-    { name = 'nvim_lsp' },
-    -- Add more sources as needed
-  }),
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.menu = ({
-        rg = '[Rg]',
-        buffer = '[Buffer]',
-        nvim_lsp = '[LSP]',
-        vsnip = '[Snippet]',
-        tags = '[Tag]',
-        path = '[Path]',
-        orgmode = '[Org]',
-        ['vim-dadbod-completion'] = '[DB]',
-      })[entry.source.name]
-      return vim_item
-    end,
-  }
-})
 
 local lspconfig = require('lspconfig')
 
@@ -91,6 +39,21 @@ vim.api.nvim_create_user_command('FormatAndSaveGleam', function()
   vim.cmd('edit!')                    -- Force reload the file from disk
   vim.cmd('write')                    -- Save the file
 end, {})
+
+-- Define a command to format and save C# files
+vim.api.nvim_create_user_command('FormatAndSavePHP', function()
+  vim.cmd('write')  -- Save the file
+  vim.cmd('silent !php-cs-fixer fix %')  -- Run the formatter on the current file
+  vim.cmd('edit!')  -- Reload the file from disk
+  vim.cmd('write')  -- Save the file again
+end, {})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.php",
+  callback = function()
+    vim.cmd('FormatAndSavePHP')
+  end,
+})
 
 -- Define a command to format and save C# files
 vim.api.nvim_create_user_command('FormatAndSaveCsharp', function()
@@ -218,9 +181,18 @@ lsp.format_on_save({
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
     ['pyright'] = {'python'},
-    ['omnisharp'] = {'csharp'}
+    ['omnisharp'] = {'csharp'},
+    ['phpactor'] = {'php'}
   }
 })
+
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+-- Setup tsserver (or ts_ls if that's your server) with the updated capabilities
+lspconfig.ts_ls.setup({
+  capabilities = capabilities,
+})
+
 
 vim.diagnostic.config({
     virtual_text = true

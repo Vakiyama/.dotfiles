@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
             {'nvim-telescope/telescope-fzy-native.nvim'},
         }
 	}
-	use ('nvim-treesitter/nvim-treesitter-context')
+	use {'nvim-treesitter/nvim-treesitter-context', commit = "f6c99b64111ab1424c8fde3d9a6f3cd08234f8cb" }
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
@@ -27,25 +27,50 @@ return require('packer').startup(function(use)
 	use ('ThePrimeagen/harpoon')
 	use ('mbbill/undotree')
 	use ('tpope/vim-fugitive')
+
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v4.x',
 		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},             -- Required
-			{                                      -- Optional
-			'williamboman/mason.nvim',
-			run = function()
-				pcall(vim.cmd, 'MasonUpdate')
-			end,
-		},
-		{'williamboman/mason-lspconfig.nvim'}, -- Optional
+        -- LSP Support
+        -- {'neovim/nvim-lspconfig'},             -- Required
+        {                                      -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-		-- Autocompletion
-		{'hrsh7th/nvim-cmp'},     -- Required
-		{'hrsh7th/cmp-nvim-lsp'}, -- Required
-		{'L3MON4D3/LuaSnip'},     -- Required
-	}};
+      -- Autocompletion
+      -- {'hrsh7th/nvim-cmp'},     -- Required
+      -- {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
+    }
+  };
+
+  use {
+    'neovim/nvim-lspconfig',
+    dependencies = { 'saghen/blink.cmp' },
+
+    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+  }
+  
+
+  use {
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
+    dependencies = { 'rafamadriz/friendly-snippets' },
+
+    -- use a release tag to download pre-built binaries
+    -- build = 'nix run .#build-plugin',
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    run = 'nix run .#build-plugin',
+    opts_extend = { "sources.default" }
+  }
+
 	-- use ('github/copilot.vim')
 	use ('f-person/git-blame.nvim') -- for blaming my coworkers
 	-- use ('prichrd/netrw.nvim') -- nicer netrw
@@ -92,11 +117,11 @@ return require('packer').startup(function(use)
     use 'AckslD/nvim-neoclip.lua'
     use 'OlegGulevskyy/better-ts-errors.nvim'
     use 'itchyny/calendar.vim'
-    use ({'boganworld/crackboard.nvim',
-        config = function()
-        require('crackboard').setup({
-          session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
-        })
-      end,
-    })
+    -- use ({'boganworld/crackboard.nvim',
+    --     config = function()
+    --     require('crackboard').setup({
+    --       session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
+    --     })
+    --   end,
+    -- })
 end)

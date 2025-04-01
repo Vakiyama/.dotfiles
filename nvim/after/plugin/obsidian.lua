@@ -1,5 +1,4 @@
 require("obsidian").setup({
-  detect_cwd = true,
   workspaces = {
     {
       name = "notes",
