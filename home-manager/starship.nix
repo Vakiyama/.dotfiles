@@ -78,6 +78,14 @@
         format = "\\[[$symbol($version)](bold #85c1dc)\\]";
         symbol = "dotnet ";
       };
+      php = {
+        format = "\\[[$symbol($version)](bold #85c1dc)\\]";
+        symbol = "php ";
+      };
+      gleam = {
+        format = "\\[[$symbol($version)](bold #ca9ee6)\\]";
+        symbol = "gleam ";
+      };
       aws = {
         disabled = true;
       };
