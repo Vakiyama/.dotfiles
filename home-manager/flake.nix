@@ -10,11 +10,7 @@
     };
     catppuccin.url = "github:catppuccin/nix";
 
-    # Add your Zen Browser flake
-    zen-flake = {
-      # Replace '~/zen-flake' with the actual path to your Zen Browser flake
-      url = "/home/Root/.config/home-manager/zen";
-    };
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:

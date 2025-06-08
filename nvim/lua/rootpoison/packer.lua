@@ -117,11 +117,12 @@ return require('packer').startup(function(use)
     use 'AckslD/nvim-neoclip.lua'
     use 'OlegGulevskyy/better-ts-errors.nvim'
     use 'itchyny/calendar.vim'
-    -- use ({'boganworld/crackboard.nvim',
-    --     config = function()
-    --     require('crackboard').setup({
-    --       session_key = '102b72779a94a1bb61d18b609108e320eb766aa28fc9b03edb64d9b29de90490',
-    --     })
-    --   end,
-    -- })
+    use ({'voltycodes/areyoulockedin.nvim',
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+        require('areyoulockedin').setup({
+          session_key = '538fef67-b449-4305-8f3c-539ec0c74aa2',
+        })
+      end,
+    })
 end)

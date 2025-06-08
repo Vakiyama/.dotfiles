@@ -9,6 +9,14 @@
 
   home.stateVersion = "22.11"; # do not change
 
+  home.pointerCursor = {
+
+    name = "Catppuccin-Frappe-Dark-Cursors";
+
+    package = pkgs.catppuccin-cursors.frappeDark;
+
+    size = 24;
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -32,13 +40,16 @@
 
 
 
-    inputs.zen-flake.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.specific
     # migrate from configuration.nix when you have time/patience
 
     # scripts
     (writeShellScriptBin "xrandr-setup" ''
       xrandr --output HDMI-0 --auto --rate 165 --primary
       sudo virsh net-start default
+    '')
+    (writeShellScriptBin "cursor" ''
+      hyprctl setcursor catppuccin-frappe-dark-cursors 24
     '')
     (writeShellScriptBin "scream-setup" ''
       scream -i virbr0 -p 4011 -u -v
@@ -172,6 +183,10 @@
   gtk = {
     enable = true;
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    cursorTheme = {
+      name = "catppuccin-cursors.frappeDark";
+      package = pkgs.catppuccin-cursors.frappeDark;
+    };
   };
 
   programs.fuzzel = {
@@ -199,20 +214,22 @@
   services.mako = {
     enable = true;
     defaultTimeout = 4000;
-    extraConfig = ''
-      background-color=#303446
-      text-color=#c6d0f5
-      border-color=#ca9ee6
-      progress-color=over #414559
-      border-radius=10
-      border-size=2
-      padding=8
-      on-notify=exec makoctl menu wofi -d -p 'Choose Action: '
+    settings = {
+      background-color = "#303446";
+      text-color = "#c6d0f5";
+      border-color = "#ca9ee6";
+      progress-color = "over #414559";
+      border-radius = 10;
+      border-size = 2;
+      padding = 8;
+      # on-notify=exec makoctl menu wofi -d -p 'Choose Action: '
+    };
+    # ''
 
-      [urgency=high]
-      border-color=#ef9f76
+    #   [urgency=high]
+    #   border-color=#ef9f76
 
-    '';
+    # '';
   };
 
   # Let Home Manager install and manage itself.
