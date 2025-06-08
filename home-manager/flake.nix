@@ -9,7 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
@@ -22,15 +21,11 @@
       homeConfigurations.Root = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # Pass the inputs to your Home Manager configuration
         extraSpecialArgs = {
-          # Access 'inputs' via 'self.inputs'
           inputs = self.inputs;
         };
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ ./shared/default.nix ];
       };
     };
 }
