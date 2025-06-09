@@ -10,7 +10,6 @@
   border: unset;
 }
 
-
 #waybar {
   background: transparent;
   color: @text;
@@ -18,7 +17,7 @@
 }
 
 #workspaces {
-  border-radius: 4px 0.8rem 0.8rem 4px;
+  border-radius: 8px 1rem 1rem 8px;
   padding: 2px 4px 2px 0;
   margin: 5px;
   margin-left: 1rem;
