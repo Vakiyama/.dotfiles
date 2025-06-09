@@ -34,7 +34,7 @@
         "timezone": "America/Vancouver",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%a %I:%M %p}"
+        "format": " {:%a %I:%M %p}"
     },
     "backlight": {
         "device": "intel_backlight",
@@ -47,10 +47,10 @@
             "critical": 15
         },
         "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "󰂄",
+        "format-plugged": "󰂄",
         "format-alt": "{icon}",
-        "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["󱉞 ", "󰁺",  "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
