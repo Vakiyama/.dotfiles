@@ -21,7 +21,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', {
         'diagnostics',
-        symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
+        symbols = {error = ' ', warn = ' ', info = ' ', hint = '󰌵 '},
     }},
     lualine_c = {'filename'},
     lualine_x = {    

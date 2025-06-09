@@ -1,23 +1,40 @@
 #!/usr/bin/env bash
+# Waybar MPRIS module – shows ▶/⏸, artist – title, position / length, progress %
 
-# Grab player status; exits if no player found
-status=$(playerctl status 2>/dev/null) || exit 0
+player=$(playerctl -l 2>/dev/null | head -n1)   || exit 0
+status=$(playerctl -p "$player" status)         || exit 0
 
-# Pick an icon based on state
+# Icons: show opposite action (⏯) to hint what a click will do
 case "$status" in
-  Paused) icon="" ;;   # Font Awesome: play
-  Playing)  icon="" ;;   # pause
-  *)       icon="" ;;   # fallback
+  Paused)  icon="" ;;   # play
+  Playing) icon="" ;;   # pause
+  *)       icon="" ;;
 esac
 
-artist=$(playerctl metadata --format '{{ artist }}' 2>/dev/null)
-title=$(playerctl metadata --format '{{ title }}' 2>/dev/null)
+artist=$(playerctl -p "$player" metadata artist)
+title=$(playerctl -p "$player" metadata title)
 
-text="$icon ${title+$title – }$artist"
- 
-# Emit JSON so Waybar can style by class & tooltip
-jq -nc --arg text "$text" \
-        --arg tooltip "$text" \
-        --arg class "${status,,}" \
-        '{text:$text, tooltip:$tooltip, class:$class}'
+# --- time / progress ----------------------------------------------------------
+pos_s=$(playerctl -p "$player" position)                    # seconds (float)
+len_us=$(playerctl -p "$player" metadata mpris:length)      # micro-seconds
+len_s=$((len_us/1000000))                                   # to seconds (int)
 
+fmt_time() { printf '%d:%02d' "$(($1/60))" "$(($1%60))"; }
+
+pos_fmt=$(fmt_time "${pos_s%%.*}")
+len_fmt=$(fmt_time "$len_s")
+
+percentage=0
+if [ "$len_s" -gt 0 ]; then
+  percentage=$(printf "%.0f" "$(echo "$pos_s $len_s" | awk '{print ($1/$2)*100}')")
+fi
+# ------------------------------------------------------------------------------
+
+text="$icon ${artist:+$artist – }$title ($pos_fmt / $len_fmt)"
+
+jq -nc \
+  --arg text "$text" \
+  --arg tooltip "$artist – $title" \
+  --arg class "${status,,}" \
+  --argjson percentage "$percentage" \
+  '{text:$text, tooltip:$tooltip, class:$class, percentage:$percentage, markup:"none"}'

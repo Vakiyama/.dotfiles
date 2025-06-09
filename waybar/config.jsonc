@@ -1,11 +1,12 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
+    "reload_style_on_change": true,
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["custom/nix", "hyprland/workspaces"],
     "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "custom/lock", "custom/power"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "custom/lock"],
     "hyprland/workspaces": {
          "disable-scroll": true,
          "sort-by-name": true,
@@ -20,15 +21,16 @@
     },
 
     "custom/music": {
-      "format": "{}",
+      "format": "{text}",
       "return-type": "json",
       "exec": "~/.config/waybar/scripts/music-status.sh",
       "interval": 1,
       "on-click": "playerctl play-pause",
       "on-scroll-up": "playerctl next",
       "on-scroll-down": "playerctl previous",
-      "max-length": 50
+      "max-length": 80
     },
+
 
     "clock": {
         "timezone": "America/Vancouver",
