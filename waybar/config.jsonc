@@ -3,7 +3,7 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["custom/nix", "hyprland/workspaces"],
     "modules-center": ["custom/music"],
     "modules-right": ["pulseaudio", "backlight", "battery", "clock", "custom/lock", "custom/power"],
     "hyprland/workspaces": {
@@ -23,7 +23,7 @@
       "format": "{}",
       "return-type": "json",
       "exec": "~/.config/waybar/scripts/music-status.sh",
-      "interval": 2,
+      "interval": 1,
       "on-click": "playerctl play-pause",
       "on-scroll-up": "playerctl next",
       "on-scroll-down": "playerctl previous",

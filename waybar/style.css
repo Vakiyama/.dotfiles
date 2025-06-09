@@ -5,6 +5,7 @@
   font-size: 16px;
   min-height: 0;
   margin-top: 2px;
+  font-weight: 700;
 }
 
 #waybar {
@@ -16,8 +17,8 @@
 #workspaces {
   border-radius: 8px;
   margin: 5px;
-  background-color: @surface0;
   margin-left: 1rem;
+  background-color: rgba(65, 69, 89, 0.8);
 }
 
 #workspaces button {
@@ -38,6 +39,7 @@
   border-radius: 8px;
 }
 
+#custom-nix,
 #custom-music,
 #tray,
 #backlight,
@@ -46,9 +48,9 @@
 #pulseaudio,
 #custom-lock,
 #custom-power {
-  background-color: @surface0;
   padding: 0.5rem 1rem;
   margin: 5px 0;
+  background-color: rgba(65, 69, 89, 0.8);
 }
 
 #clock {
@@ -86,6 +88,8 @@
 #custom-music {
   color: @mauve;
   border-radius: 1rem;
+  font-weight: 700;
+  background-color: rgba(65, 69, 89, 0.8);
 }
 
 #custom-lock {
