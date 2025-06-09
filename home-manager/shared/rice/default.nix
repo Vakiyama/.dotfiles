@@ -5,5 +5,6 @@
     ./cursor.nix
     ./fuzzel.nix
     ./mako.nix
+    ./waybar.nix
   ];
 }

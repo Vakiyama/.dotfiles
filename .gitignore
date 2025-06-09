@@ -53,3 +53,11 @@
 !rofi/*/*
 !rofi/*/*/*
 !rofi/*/*/*/*
+
+
+# rofi
+!waybar
+!waybar/*
+!waybar/*/*
+!waybar/*/*/*
+!waybar/*/*/*/*
