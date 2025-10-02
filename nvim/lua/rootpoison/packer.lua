@@ -21,8 +21,8 @@ return require('packer').startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
-	use { "catppuccin/nvim", as = "catppuccin" }
-	use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+	use { "catppuccin/nvim", as = "catppuccin", commit = "cb5665990a797b102715188e73c44c3931b3b42e" }
+	use {'nvim-treesitter/nvim-treesitter', branch = 'master', run = ":TSUpdate" }
 	use ('nvim-treesitter/playground')
 	use ('ThePrimeagen/harpoon')
 	use ('mbbill/undotree')
@@ -123,6 +123,12 @@ return require('packer').startup(function(use)
         require('areyoulockedin').setup({
           session_key = '538fef67-b449-4305-8f3c-539ec0c74aa2',
         })
+      end,
+    })
+    use 'nvim-mini/mini.indentscope'
+    use ({'catgoose/nvim-colorizer.lua',
+      config = function()  
+        require("colorizer").setup()
       end,
     })
 end)
