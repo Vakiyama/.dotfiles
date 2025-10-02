@@ -131,4 +131,5 @@ return require('packer').startup(function(use)
         require("colorizer").setup()
       end,
     })
+    use 'wakatime/vim-wakatime'
 end)
