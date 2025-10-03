@@ -171,24 +171,27 @@ then
 end
 
 
-lsp.format_on_save({
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['ts_ls'] = {'javascript', 'typescript'},
+servers = {
+    ['ts_ls'] = {
+      filetypes = { 'typescript', 'javascript' },
+    },
     ['rust_analyzer'] = {'rust'},
     ['nil_ls'] = {'nix'},
     ['pyright'] = {'python'},
     ['omnisharp'] = {'csharp'},
     ['phpactor'] = {'php'}
   }
+
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = servers 
 })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
--- Setup tsserver (or ts_ls if that's your server) with the updated capabilities
 lspconfig.ts_ls.setup({
   capabilities = capabilities,
 })

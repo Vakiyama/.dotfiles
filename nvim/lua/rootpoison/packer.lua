@@ -126,10 +126,6 @@ return require('packer').startup(function(use)
       end,
     })
     use 'nvim-mini/mini.indentscope'
-    use ({'catgoose/nvim-colorizer.lua',
-      config = function()  
-        require("colorizer").setup()
-      end,
-    })
     use 'wakatime/vim-wakatime'
+    use('dmmulroy/ts-error-translator.nvim')
 end)

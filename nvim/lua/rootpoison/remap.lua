@@ -55,7 +55,7 @@ vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file")
 vim.keymap.set("n", "<leader>z", ":ZenMode<CR>")
 
 -- pencil
-vim.keymap.set("n", "<leader>p", ":TogglePencil<CR>");
+vim.keymap.set("n", "<leader>pt", ":TogglePencil<CR>");
 
 -- markdown preview
 vim.g.mkdp_markdown_css = '/home/Root/.config/nvim/after/plugin/markdown.css';
@@ -79,3 +79,5 @@ vim.cmd([[
   command! -bar                                        Messages  messages
 ]])
 
+-- colorizer toggle
+vim.keymap.set("n", "<leader>ct", ":ColorizerToggle<CR>");
