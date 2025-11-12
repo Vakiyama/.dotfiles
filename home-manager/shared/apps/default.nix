@@ -42,7 +42,7 @@
       ngrok
       r2modman
 
-      htop-vim
+      bottom
       prettierd
 
       eza # better ls (exa)
