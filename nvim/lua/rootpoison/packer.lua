@@ -116,7 +116,6 @@ return require('packer').startup(function(use)
     use 'kristijanhusak/vim-dadbod-completion'
     use 'AckslD/nvim-neoclip.lua'
     use 'OlegGulevskyy/better-ts-errors.nvim'
-    use 'itchyny/calendar.vim'
     use ({'voltycodes/areyoulockedin.nvim',
         requires = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -125,7 +124,9 @@ return require('packer').startup(function(use)
         })
       end,
     })
-    use 'nvim-mini/mini.indentscope'
     use 'wakatime/vim-wakatime'
-    use('dmmulroy/ts-error-translator.nvim')
+    use {
+      "luckasRanarison/clear-action.nvim",
+    }
+    use "lukas-reineke/indent-blankline.nvim"
 end)

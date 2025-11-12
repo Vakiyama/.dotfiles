@@ -202,8 +202,48 @@ vim.diagnostic.config({
 }) 
 
 require('mason').setup({})
+
 require('mason-lspconfig').setup({
-  handlers = {
-    lsp.default_setup,
+   handlers = {
+    -- keep your default setup
+    require('lsp-zero').default_setup,
+
+    -- override tailwindcss so we can add gleam support
+    tailwindcss = function()
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        -- make the server attach to Gleam buffers too
+        filetypes = {
+          'html', 'css', 'scss', 'sass', 'postcss',
+          'javascript', 'javascriptreact', 'typescript', 'typescriptreact',
+          'vue', 'svelte',
+          'gleam', 
+        },
+
+        -- let it find your project root even in monorepos
+        root_dir = lspconfig.util.root_pattern(
+          'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.ts',
+          'postcss.config.js', 'postcss.config.cjs', 'postcss.config.ts',
+          'package.json', 'bun.lockb', 'pnpm-lock.yaml', 'yarn.lock', '.git'
+        ),
+
+        -- VS Code-style "init_options" are respected by the Tailwind LSP
+
+        settings = {
+          tailwindCSS = {
+            includeLanguages = {
+                gleam = "javascript",
+            },
+            classFunctions = {
+                "class",
+                "classes",
+            },
+          },
+        },
+      })
+    end,
+  },
+  ensure_installed = {
+    'tailwindcss',
   },
 })
