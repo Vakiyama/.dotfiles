@@ -67,5 +67,6 @@
       ripgrep
 
       inputs.zen-browser.packages.${pkgs.system}.default
+      dolphin-emu
     ];
 }
