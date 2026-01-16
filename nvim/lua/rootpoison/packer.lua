@@ -129,4 +129,10 @@ return require('packer').startup(function(use)
       "luckasRanarison/clear-action.nvim",
     }
     use "lukas-reineke/indent-blankline.nvim"
+    use({
+      "stevearc/conform.nvim",
+      config = function()
+        require("conform").setup()
+      end,
+    })
 end)

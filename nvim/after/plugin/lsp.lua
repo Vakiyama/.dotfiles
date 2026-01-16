@@ -155,21 +155,24 @@ local lsp_configurations = require('lspconfig.configs')
 --             end
 --         end
 
-if
-    vim.fn.executable('rust-analyzer') == 1 and
-    not lsp_configurations.rustlsp
-then
-    lsp_configurations.rustlsp = {
-        default_config = {
-            name = 'rust',
-            cmd = { 'rust-analyzer' },
-            filetypes = { 'rust' },
-            root_dir = require('lspconfig.util').root_pattern('flake.nix')
-        }
-    }
-    lspconfig.rustlsp.setup({})
-end
 
+if vim.fn.executable('rust-analyzer') == 1 then
+    lspconfig.rust_analyzer.setup({
+        settings = {
+            ['rust-analyzer'] = {
+                check = {
+                    command = "clippy",  -- Use clippy instead of cargo check
+                },
+                -- Optional: configure clippy features
+                checkOnSave = {
+                    command = "clippy",
+                },
+            }
+        },
+        -- Only if you need to override root_dir
+        root_dir = require('lspconfig.util').root_pattern('Cargo.toml', 'rust-project.json', 'flake.nix'),
+    })
+end
 
 servers = {
     ['ts_ls'] = {
