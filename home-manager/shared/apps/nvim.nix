@@ -1,6 +1,4 @@
-{ ... }: {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
+{ pkgs, ... }: {
+  home.packages = [ pkgs.neovim ];
+  home.sessionVariables.EDITOR = "nvim";
 }

@@ -6,6 +6,7 @@
     ./scripts.nix
     ./direnv.nix
     ./git.nix
+    ./opencode.nix
   ];
 
   nixpkgs.config =
@@ -24,7 +25,7 @@
       google-chrome
       discord
       spotify
-      neofetch
+      # neowofetch
       feh
       obsidian
       slack
@@ -68,5 +69,7 @@
 
       inputs.zen-browser.packages.${pkgs.system}.default
       dolphin-emu
+      inputs.fenix.packages.${pkgs.system}.minimal.toolchain
+      gcc
     ];
 }

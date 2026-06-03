@@ -2,7 +2,7 @@
 {
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       credential.helper = "store";
       safe.directory = "/etc/nixos";
     };
