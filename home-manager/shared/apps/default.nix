@@ -71,5 +71,7 @@
       dolphin-emu
       inputs.fenix.packages.${pkgs.system}.minimal.toolchain
       gcc
+      tree-sitter
+      graphite-cli
     ];
 }

@@ -23,15 +23,34 @@ return require('lazy').setup({
 
 	-- Treesitter + Context + Playground
 	{
-		'nvim-treesitter/nvim-treesitter',
-		branch = 'master',
-		run = ':TSUpdate',
+   "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    version = false,          -- don't let lazy pin the ancient master tag
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter").install({
+        "rust", "nix", "lua", "python", "toml",
+        "javascript", "typescript", "tsx", "html", "css",
+        "c_sharp", "php", "gleam",
+        "markdown", "markdown_inline", "json", "yaml",
+        "bash", "vim", "vimdoc", "query",
+      })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          -- start highlighting only if a parser exists for this ft
+          if pcall(vim.treesitter.start, args.buf) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
+    end,
 	},
 	{
 		'nvim-treesitter/nvim-treesitter-context',
 		commit = 'f6c99b64111ab1424c8fde3d9a6f3cd08234f8cb',
 	},
-	{ 'nvim-treesitter/playground' },
 
 	-- Lualine + Devicons
 	{
@@ -91,8 +110,43 @@ return require('lazy').setup({
 	-- Git blame
 	{ 'f-person/git-blame.nvim' },
 
-	-- Trouble
-	{ 'folke/trouble.nvim' },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
 
 	-- Git Worktree
 	{ 'ThePrimeagen/git-worktree.nvim' },
