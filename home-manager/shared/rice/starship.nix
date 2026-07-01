@@ -86,6 +86,10 @@
         format = "\\[[$symbol($version)](bold #ca9ee6)\\]";
         symbol = "gleam ";
       };
+      terraform = { 
+        format = "\\[[$symbol($version)](bold #ca9ee6)\\]";
+        symbol = "terraform ";
+      };
       aws = {
         disabled = true;
       };

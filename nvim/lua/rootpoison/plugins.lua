@@ -105,6 +105,22 @@ return require('lazy').setup({
 			require('blink.cmp').build():pwait()
 		end,
 		opts_extend = { "sources.default" },
+    opts = {
+      sources = {
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            providers = {
+                lsp = {
+                    score_offset = 100, 
+                },
+                buffer = {
+                    score_offset = -3,
+                },
+                snippets = {
+                    score_offset = -5, 
+                },
+            },
+        },
+    }
 	},
 
 	-- Git blame

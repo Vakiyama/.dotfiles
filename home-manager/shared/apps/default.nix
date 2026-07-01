@@ -73,5 +73,7 @@
       gcc
       tree-sitter
       graphite-cli
+      prismlauncher
+      claude-code
     ];
 }

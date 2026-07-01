@@ -4,7 +4,7 @@
     enable = true;
     tui.theme = "catppuccin";
     settings = {
-      model = "llama-local/qwen3.6:27b";
+      model = "gauge/Qwen3.6-35B-A3B-MTP-UD-IQ4_NL.gguf";  # default → remote
       lsp = true;
       provider = {
         llama-local = {
@@ -16,6 +16,21 @@
           models = {
             "qwen3.6:27b" = {
               name = "Qwen3.6 27B";
+              tools = true;
+              options.supportsToolCalls = true;
+            };
+          };
+        };
+        gauge = {
+          name = "Gauge Numerics (remote)";
+          npm = "@ai-sdk/openai-compatible";
+          options = {
+            baseURL = "https://llm.gaugenumerics.com/v1";
+            apiKey = "{file:/run/secrets/ethan_server_api_key}";
+          };
+          models = {
+            "Qwen3.6-35B-A3B-MTP-UD-IQ4_NL.gguf" = {
+              name = "Qwen3.6 35B A3B (remote)";
               tools = true;
               options.supportsToolCalls = true;
             };
