@@ -1,10 +1,11 @@
 local blink = require('blink.cmp')
 blink.setup({
 	fuzzy = {
-		implementation = "prefer_rust_with_warning",
-    -- prebuilt_binaries = {
-		-- 	download = false,
-		-- }
+		-- Nix env: build the native matcher from source via the `build` hook in
+		-- plugins.lua (`require('blink.cmp').build():pwait()`). Prebuilt binaries
+		-- from GitHub releases don't link correctly on Nix. Use hard "rust" so a
+		-- stale/missing build errors loudly instead of silently falling back to Lua.
+		implementation = "rust",
 	},
 	completion = {
 		menu = {
