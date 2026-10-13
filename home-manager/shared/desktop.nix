@@ -1,37 +1,33 @@
+# GUI apps + Wayland rice. Only imported by the desktop/laptop config,
+# never by WSL.
 { pkgs, inputs, ... }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+in
 {
   imports = [
-    ./fish.nix
-    ./nvim.nix
-    ./scripts.nix
-    ./direnv.nix
-    ./git.nix
-    ./opencode.nix
+    ./apps/opencode.nix
+    ./rice/cursor.nix
+    ./rice/fuzzel.nix
+    ./rice/mako.nix
+    ./rice/waybar.nix
   ];
-
-  nixpkgs.config =
-    {
-      allowUnfree = true;
-    };
 
   home.packages = with pkgs;
     [
       adwaita-icon-theme
       brightnessctl
       git-credential-manager
-      xfce.thunar
+      thunar
       bluetuith
 
       google-chrome
       discord
       spotify
-      # neowofetch
       feh
       obsidian
       slack
-      ripgrep
       zlib
-      yq-go
       pciutils
       tridactyl-native
       steam
@@ -43,11 +39,6 @@
       ngrok
       r2modman
 
-      bottom
-      prettierd
-
-      eza # better ls (exa)
-      rm-improved # safer rm (rip)
       # unstable.kdenlive
       obs-studio
       pgmodeler
@@ -56,24 +47,15 @@
       ytfzf
       ueberzugpp
       mpv
-      python3
-      luajitPackages.luarocks
-      unzip
       pavucontrol
       earbuds
       openal
 
-
       kitty
-      ripgrep
 
-      inputs.zen-browser.packages.${pkgs.system}.default
+      inputs.zen-browser.packages.${system}.default
       dolphin-emu
-      inputs.fenix.packages.${pkgs.system}.minimal.toolchain
-      gcc
-      tree-sitter
       graphite-cli
       prismlauncher
-      claude-code
     ];
 }

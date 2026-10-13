@@ -62,7 +62,7 @@ return require('lazy').setup({
 	-- Catppuccin
 	{
 		'catppuccin/nvim',
-		as = 'catppuccin',
+		name = 'catppuccin',
 		commit = 'cb5665990a797b102715188e73c44c3931b3b42e',
 	},
 
@@ -195,7 +195,7 @@ return require('lazy').setup({
 	-- Markdown Preview
 	{
 		'iamcco/markdown-preview.nvim',
-		run = 'cd app && npm install',
+		build = 'cd app && npm install',
 		ft = { 'markdown' },
 	},
 

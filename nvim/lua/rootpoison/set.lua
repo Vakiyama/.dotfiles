@@ -29,3 +29,20 @@ vim.g.netrw_banner = 0
 vim.opt.conceallevel = 1
 
 vim.api.nvim_set_var('pencil#conceallevel', 2)
+
+-- WSL: route the + / * registers through the Windows clipboard
+-- (`:h clipboard-wsl`). Needs WSL interop + Windows PATH, both on by default.
+if vim.fn.has("wsl") == 1 then
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end

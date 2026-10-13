@@ -20,17 +20,32 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      mkHome = { username, modules }:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inputs = self.inputs; };
+          modules = [
+            ./shared/default.nix
+            {
+              home.username = username;
+              home.homeDirectory = "/home/${username}";
+            }
+          ] ++ modules;
+        };
     in
     {
-      homeConfigurations.Root = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      # desktop / laptop: everything
+      homeConfigurations.Root = mkHome {
+        username = "Root";
+        modules = [ ./shared/desktop.nix ];
+      };
 
-        extraSpecialArgs = {
-          inputs = self.inputs;
-        };
-
-        modules = [ ./shared/default.nix ];
+      # WSL: terminal core only
+      #   home-manager switch --flake ~/.config/home-manager#wsl
+      homeConfigurations.wsl = mkHome {
+        username = "Root";
+        modules = [ ];
       };
     };
 }
-
