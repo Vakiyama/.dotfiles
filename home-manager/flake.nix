@@ -45,7 +45,7 @@
       #   home-manager switch --flake ~/.config/home-manager#wsl
       homeConfigurations.wsl = mkHome {
         username = "Root";
-        modules = [ ];
+        modules = [ ./shared/wsl.nix ];
       };
     };
 }

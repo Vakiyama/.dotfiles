@@ -24,6 +24,10 @@
 !home-manager/*/*/*
 !home-manager/*/*/*/*
 
+# glazewm (windows)
+!glazewm/
+!glazewm/*
+
 # i3
 !i3/
 !i3/*
