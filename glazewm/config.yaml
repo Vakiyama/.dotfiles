@@ -1,11 +1,14 @@
 # GlazeWM: Windows port of hypr/hyprland.conf
 #
-# Mod key is ALT, not SUPER: Windows reserves a lot of Win+key combos
-# (Win+L lock, Win+D desktop, ...) and GlazeWM can't reliably steal them.
-# Otherwise the binds match Hyprland 1:1 with SUPER -> ALT.
+# Mod key is RIGHT ALT ('ralt'), and the physical Win key is remapped to it
+# (Scancode Map, or PowerToys Keyboard Manager), so the binds sit exactly
+# where they do in Hyprland: physical Super+h = ralt+h.
+# Why not bind Win directly: Windows opens Start every time Win is released
+# after a GlazeWM bind, and Win+L (lock) can't be intercepted at all.
+# Left Alt stays untouched for apps (alt+tab, alt+d in browsers, ...).
 #
 # Lives in ~/.config/glazewm/config.yaml (WSL); `glaze-sync` copies it to
-# %USERPROFILE%\.glzr\glazewm\config.yaml, then alt+shift+r reloads.
+# %USERPROFILE%\.glzr\glazewm\config.yaml, then Super+Shift+R reloads.
 
 general:
   startup_commands: []
@@ -120,121 +123,123 @@ binding_modes:
       - commands: ['resize --height -2%']
         bindings: ['j', 'down']
       - commands: ['wm-disable-binding-mode --name resize']
-        bindings: ['escape', 'enter', 'alt+r']
+        bindings: ['escape', 'enter', 'ralt+r']
 
 keybindings:
   # --- apps ---------------------------------------------------------------
   # hypr: SUPER+Return -> kitty. Set NixOS as Windows Terminal's default
   # profile so this drops you straight into fish.
   - commands: ['shell-exec wt']
-    bindings: ['alt+enter']
+    bindings: ['ralt+enter']
 
-  # hypr: SUPER+SHIFT+S screenshot -> use Windows' own win+shift+s.
-  # hypr: SUPER+D fuzzel -> tap Win and type.
+  # Super no longer reaches Windows, so its own Win shortcuts move:
+  #   Start / search (hypr: SUPER+D fuzzel) -> ctrl+esc
+  #   screenshot (hypr: SUPER+SHIFT+S)      -> PrtScn (Snipping Tool on Win 11)
 
   # --- windows ------------------------------------------------------------
   - commands: ['close']
-    bindings: ['alt+shift+q']
+    bindings: ['ralt+shift+q']
   - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
+    bindings: ['ralt+f']
   # hypr: togglesplit
   - commands: ['toggle-tiling-direction']
-    bindings: ['alt+v']
+    bindings: ['ralt+v']
   - commands: ['toggle-floating --centered']
-    bindings: ['alt+shift+space']
+    bindings: ['ralt+shift+space']
   - commands: ['wm-cycle-focus']
-    bindings: ['alt+space']
+    bindings: ['ralt+space']
   - commands: ['toggle-minimized']
-    bindings: ['alt+m']
+    bindings: ['ralt+m']
 
-  # Focus: alt+hjkl (hypr: SUPER+hjkl)
+  # Focus: Super+hjkl
+  # (arrows too, as a fallback if physical Super+L still locks the screen)
   - commands: ['focus --direction left']
-    bindings: ['alt+h']
+    bindings: ['ralt+h', 'ralt+left']
   - commands: ['focus --direction down']
-    bindings: ['alt+j']
+    bindings: ['ralt+j', 'ralt+down']
   - commands: ['focus --direction up']
-    bindings: ['alt+k']
+    bindings: ['ralt+k', 'ralt+up']
   - commands: ['focus --direction right']
-    bindings: ['alt+l']
+    bindings: ['ralt+l', 'ralt+right']
 
-  # Move: alt+shift+ARROWS (hypr: SUPER+SHIFT+arrows).
-  # Deliberately NOT alt+shift+h/l: tmux uses M-H / M-L for prev/next window.
+  # Move: Super+Shift+arrows, same as hypr.
+  # (left Alt stays free, so tmux M-H / M-L are unaffected)
   - commands: ['move --direction left']
-    bindings: ['alt+shift+left']
+    bindings: ['ralt+shift+left']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+down']
+    bindings: ['ralt+shift+down']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+up']
+    bindings: ['ralt+shift+up']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+right']
+    bindings: ['ralt+shift+right']
 
   # Resize: alt+r enters resize mode, then hjkl / arrows, esc to leave
   - commands: ['wm-enable-binding-mode --name resize']
-    bindings: ['alt+r']
+    bindings: ['ralt+r']
 
   # --- workspaces (hypr: SUPER+[0-9], SUPER+SHIFT+[0-9]) -------------------
   - commands: ['focus --workspace 1']
-    bindings: ['alt+1']
+    bindings: ['ralt+1']
   - commands: ['focus --workspace 2']
-    bindings: ['alt+2']
+    bindings: ['ralt+2']
   - commands: ['focus --workspace 3']
-    bindings: ['alt+3']
+    bindings: ['ralt+3']
   - commands: ['focus --workspace 4']
-    bindings: ['alt+4']
+    bindings: ['ralt+4']
   - commands: ['focus --workspace 5']
-    bindings: ['alt+5']
+    bindings: ['ralt+5']
   - commands: ['focus --workspace 6']
-    bindings: ['alt+6']
+    bindings: ['ralt+6']
   - commands: ['focus --workspace 7']
-    bindings: ['alt+7']
+    bindings: ['ralt+7']
   - commands: ['focus --workspace 8']
-    bindings: ['alt+8']
+    bindings: ['ralt+8']
   - commands: ['focus --workspace 9']
-    bindings: ['alt+9']
+    bindings: ['ralt+9']
   - commands: ['focus --workspace 10']
-    bindings: ['alt+0']
+    bindings: ['ralt+0']
 
   - commands: ['move --workspace 1', 'focus --workspace 1']
-    bindings: ['alt+shift+1']
+    bindings: ['ralt+shift+1']
   - commands: ['move --workspace 2', 'focus --workspace 2']
-    bindings: ['alt+shift+2']
+    bindings: ['ralt+shift+2']
   - commands: ['move --workspace 3', 'focus --workspace 3']
-    bindings: ['alt+shift+3']
+    bindings: ['ralt+shift+3']
   - commands: ['move --workspace 4', 'focus --workspace 4']
-    bindings: ['alt+shift+4']
+    bindings: ['ralt+shift+4']
   - commands: ['move --workspace 5', 'focus --workspace 5']
-    bindings: ['alt+shift+5']
+    bindings: ['ralt+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
-    bindings: ['alt+shift+6']
+    bindings: ['ralt+shift+6']
   - commands: ['move --workspace 7', 'focus --workspace 7']
-    bindings: ['alt+shift+7']
+    bindings: ['ralt+shift+7']
   - commands: ['move --workspace 8', 'focus --workspace 8']
-    bindings: ['alt+shift+8']
+    bindings: ['ralt+shift+8']
   - commands: ['move --workspace 9', 'focus --workspace 9']
-    bindings: ['alt+shift+9']
+    bindings: ['ralt+shift+9']
   - commands: ['move --workspace 10', 'focus --workspace 10']
-    bindings: ['alt+shift+0']
+    bindings: ['ralt+shift+0']
 
   # Monitors (office dock): send workspace to the other screen
   - commands: ['move-workspace --direction left']
-    bindings: ['alt+shift+a']
+    bindings: ['ralt+shift+a']
   - commands: ['move-workspace --direction right']
-    bindings: ['alt+shift+f']
+    bindings: ['ralt+shift+f']
 
   # Hyprland's SUPER+scroll -> cycle active workspaces
   # (alt+tab is left to Windows)
   - commands: ['focus --next-active-workspace']
-    bindings: ['alt+s']
+    bindings: ['ralt+s']
   - commands: ['focus --prev-active-workspace']
-    bindings: ['alt+a']
+    bindings: ['ralt+a']
 
   # --- WM -----------------------------------------------------------------
   # Escape hatch: suspends all tiling + binds (e.g. for a screen share)
   - commands: ['wm-toggle-pause']
-    bindings: ['alt+shift+p']
+    bindings: ['ralt+shift+p']
   - commands: ['wm-reload-config']
-    bindings: ['alt+shift+r']
+    bindings: ['ralt+shift+r']
   - commands: ['wm-redraw']
-    bindings: ['alt+shift+w']
+    bindings: ['ralt+shift+w']
   - commands: ['wm-exit']
-    bindings: ['alt+shift+e']
+    bindings: ['ralt+shift+e']
