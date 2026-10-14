@@ -74,7 +74,8 @@ window_behavior:
       shown_on_top: false
     fullscreen:
       maximized: false
-      shown_on_top: false
+      # Keep fullscreen windows (Zen F11, videos) above the taskbar.
+      shown_on_top: true
 
 workspaces:
   - name: '1'
