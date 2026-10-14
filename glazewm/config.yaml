@@ -132,9 +132,13 @@ keybindings:
   - commands: ['shell-exec wt']
     bindings: ['ralt+enter']
 
-  # Super no longer reaches Windows, so its own Win shortcuts move:
-  #   Start / search (hypr: SUPER+D fuzzel) -> ctrl+esc
-  #   screenshot (hypr: SUPER+SHIFT+S)      -> PrtScn (Snipping Tool on Win 11)
+  # hypr: SUPER+D fuzzel -> Flow Launcher (Catppuccin Frappe theme).
+  # Re-launching Flow while it runs just pops its search box.
+  - commands: ['shell-exec %LocalAppData%/FlowLauncher/Flow.Launcher.exe']
+    bindings: ['ralt+d']
+
+  # hypr: SUPER+SHIFT+S screenshot -> PrtScn (Snipping Tool on Win 11).
+  # Start menu, if ever needed -> ctrl+esc
 
   # --- windows ------------------------------------------------------------
   - commands: ['close']

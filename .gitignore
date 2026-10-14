@@ -24,9 +24,11 @@
 !home-manager/*/*/*
 !home-manager/*/*/*/*
 
-# glazewm (windows)
+# glazewm + flow launcher (windows)
 !glazewm/
 !glazewm/*
+!flow-launcher/
+!flow-launcher/*
 
 # i3
 !i3/
