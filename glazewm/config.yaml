@@ -133,9 +133,9 @@ keybindings:
     bindings: ['ralt+enter']
 
   # hypr: SUPER+D fuzzel -> Flow Launcher (Catppuccin Frappe theme).
-  # Re-launching Flow while it runs just pops its search box.
-  - commands: ['shell-exec %LocalAppData%/FlowLauncher/Flow.Launcher.exe']
-    bindings: ['ralt+d']
+  # Not bound here: Flow's own hotkey is set to Alt+D, which fires instantly
+  # (relaunching Flow.Launcher.exe from here works but takes ~half a second).
+  # GlazeWM leaves ralt+d alone so it reaches Flow.
 
   # hypr: SUPER+SHIFT+S screenshot -> PrtScn (Snipping Tool on Win 11).
   # Start menu, if ever needed -> ctrl+esc
