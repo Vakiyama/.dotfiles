@@ -109,10 +109,9 @@ if vim.fn.executable('rust-analyzer') == 1 then
   vim.lsp.enable('rust_analyzer')
 end
 
--- TypeScript/JavaScript
-vim.lsp.config('ts_ls', {
-	filetypes = { 'typescript', 'javascript' },
-})
+-- TypeScript/JavaScript: nvim-lspconfig's defaults already cover
+-- typescript, typescriptreact (tsx), javascript and javascriptreact (jsx).
+-- (Overriding filetypes to just ts/js is what kept it out of .tsx files.)
 
 -- Python
 vim.lsp.config('pyright', {
@@ -152,16 +151,13 @@ vim.lsp.config('tailwindcss', {
 		'javascript', 'javascriptreact', 'typescript', 'typescriptreact',
 		'vue', 'svelte', 'gleam',
 	},
-  root_markers = { 
+  -- (no root_dir function: in nvim 0.11 it's root_dir(bufnr, on_dir) and must
+  -- call on_dir, so the old fname-returning one stopped tailwind from starting)
+  root_markers = {
 			'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.ts',
 			'postcss.config.js', 'postcss.config.cjs', 'postcss.config.ts',
 			'package.json', 'bun.lockb', 'pnpm-lock.yaml', 'yarn.lock', '.git',
   },
-	root_dir = function(fname)
-		return vim.fs.root(fname, {
-
-		})
-	end,
 	settings = {
 		tailwindCSS = {
 			includeLanguages = { gleam = "javascript" },
