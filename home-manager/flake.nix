@@ -14,6 +14,12 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs"; # avoid a second nixpkgs copy
     };
+    # Claude Code tracks upstream releases within hours, unlike nixpkgs.
+    # Bump just this:  nix flake update claude-code
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:

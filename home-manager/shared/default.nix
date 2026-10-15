@@ -51,7 +51,8 @@ in
     nixpkgs-fmt
     nil
 
-    claude-code
+    # from the claude-code flake input (see flake.nix), not nixpkgs
+    inputs.claude-code.packages.${system}.default
   ];
 
   home.stateVersion = "22.11"; # do not change
